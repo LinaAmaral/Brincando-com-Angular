@@ -22,12 +22,14 @@ export class JogoComponent implements OnInit {
     this.jogo.inicializar();
   }
 
-
   get showInicio():boolean{
     return this.jogo.showInicio;
   }
   get showJogo():boolean{
     return this.jogo.showJogo;
+  }
+  get jogarNovamente():boolean{
+    return this.jogo.jogarNovamente;
   }
   iniciarJogo():void{
     this.jogo.iniciarJogo();

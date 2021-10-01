@@ -17,6 +17,7 @@ export class JogoService {
 
   private _showInicio: boolean;
   private _showJogo: boolean;
+  private _jogarNovamente: boolean;
   
 
   //criamos um array para o mestre armazenar os comandos dados, e um para o jogador armazenar os botões clicados. Criamos um count para contabilizar o número de botões a cada rodada, sempre começa em 2. Usamos o subject para ficar escutando a reposta do jogador.
@@ -33,6 +34,7 @@ export class JogoService {
   inicializar():void{
     this._showInicio = true;
     this._showJogo = false;
+    this._jogarNovamente = false;
   }
   get showInicio():boolean{
     return this._showInicio;
@@ -40,12 +42,13 @@ export class JogoService {
   get showJogo():boolean{
     return this._showJogo;
   }
+  get jogarNovamente():boolean{
+    return this._jogarNovamente;
+  }
   iniciarJogo():void{
     this._showInicio = false;
     this._showJogo = true;
   }
-
-
 
 
   // aleatoriamente ele escolhe as cores que foram definidas no model
@@ -73,6 +76,7 @@ export class JogoService {
 
   //restart os comandos do mestre
   restartMestre(): string[] {
+    this._jogarNovamente = false
     this.count = START_COUNT;
     return this.mestreManda();
   }
@@ -82,7 +86,7 @@ export class JogoService {
     this.jogador.push(val);
     if (!this.comparaComMestre()) {
       this.jogador = [];
-      console.log("errou")
+      this._jogarNovamente = true;
     }
     this.definirEstado();
   }
@@ -114,7 +118,4 @@ export class JogoService {
     })
   }
 
-  mensagenErro(){
-    
-  }
 }
