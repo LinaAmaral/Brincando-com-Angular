@@ -15,17 +15,38 @@ import { Subject } from 'rxjs';
 })
 export class JogoService {
 
+  private _showInicio: boolean;
+  private _showJogo: boolean;
+  
+
   //criamos um array para o mestre armazenar os comandos dados, e um para o jogador armazenar os botões clicados. Criamos um count para contabilizar o número de botões a cada rodada, sempre começa em 2. Usamos o subject para ficar escutando a reposta do jogador.
   mestre: string[] = [];
   jogador: string[] = [];
   count: number;
   estado = new Subject<any>();
 
-
   //o jogo começa com 2 botões acendendo, esse valor vem do model
   constructor() {
     this.count = START_COUNT;
   }
+  
+  inicializar():void{
+    this._showInicio = true;
+    this._showJogo = false;
+  }
+  get showInicio():boolean{
+    return this._showInicio;
+  }
+  get showJogo():boolean{
+    return this._showJogo;
+  }
+  iniciarJogo():void{
+    this._showInicio = false;
+    this._showJogo = true;
+  }
+
+
+
 
   // aleatoriamente ele escolhe as cores que foram definidas no model
   private get randomColor(): string {
@@ -61,6 +82,7 @@ export class JogoService {
     this.jogador.push(val);
     if (!this.comparaComMestre()) {
       this.jogador = [];
+      console.log("errou")
     }
     this.definirEstado();
   }
@@ -90,8 +112,9 @@ export class JogoService {
       mestre: this.mestre,
       count: this.count,
     })
-    console.log("Jogador" + this.jogador)
-    console.log("Mestre" + this.mestre)
-    console.log("Count" + this.count)
+  }
+
+  mensagenErro(){
+    
   }
 }

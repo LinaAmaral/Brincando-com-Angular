@@ -19,6 +19,18 @@ export class JogoComponent implements OnInit {
   constructor(private jogo: JogoService) { }
 
   ngOnInit() {
+    this.jogo.inicializar();
+  }
+
+
+  get showInicio():boolean{
+    return this.jogo.showInicio;
+  }
+  get showJogo():boolean{
+    return this.jogo.showJogo;
+  }
+  iniciarJogo():void{
+    this.jogo.iniciarJogo();
     this.jogo.estado.subscribe(estado => {
       console.log(estado);
       if (this.count != estado.count) {

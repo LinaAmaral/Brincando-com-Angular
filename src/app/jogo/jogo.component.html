@@ -1,23 +1,37 @@
 <div>
-
     <!-- Tela de instruções - parte inicial -->
-    <div>
-    <P>Instruções do jogo:</P>
-    <p>Para conquistar pontos no jogo Simon Game, o jogador precisa se lembrar da sequência de cores e repeti-la
-        pressionando os botões coloridos na ordem correta, aumentando o suspense em cada rodada. Os jogadores devem
-        tentar superar a pontuação mais alta completando sequências mais longas sem errar.</p>
-    
-    <a href="#" class="btn btn2">Iniciar</a>
+    <div class="container" *ngIf="showInicio">
+        <div class="col-12">
+            <div class="row">
+                <h3 class="text-center">Instruçoes do jogo</h3>
+            </div>
+
+            <div class="col-6">
+                <ul>
+                    <li>Inicie essa aventura e teste sua memória;</li>
+                    <li>Para conquistar pontos no "Simon Game", você precisa lembrar da sequência aleatórioa de
+                        cores e
+                        repeti-la</li>
+                    <li>Pressione os botões coloridos na ordem corretas</li>
+                    <li>A cada rodade é um suspense, pois vai aumentandoa a sequência e seu desafio será conseguir a
+                        maior
+                        pontuação sem errar</li>
+                </ul>
+            </div>
+            <a href="#" class="btn btn2" (click)="iniciarJogo()">Iniciar</a>
+        </div>
     </div>
 
     <!-- São 4 botões, um de cada cor. Ao ser ativado chama a estilizalçao de preenchimento e chama a função que recebe o movimento do jogador -->
-    <div class="container">
+    <div class="container" *ngIf="showJogo">
         <div class="flex center">
-            <app-jogo-botao [active]="colors.red" color="red" (adivinha)="jogadorMovimenta($event)"></app-jogo-botao>
+            <app-jogo-botao [active]="colors.red" color="red" (adivinha)="jogadorMovimenta($event)">
+            </app-jogo-botao>
         </div>
 
         <div class="flex middle">
-            <app-jogo-botao [active]="colors.blue" color="blue" (adivinha)="jogadorMovimenta($event)"></app-jogo-botao>
+            <app-jogo-botao [active]="colors.blue" color="blue" (adivinha)="jogadorMovimenta($event)">
+            </app-jogo-botao>
 
             <p>{{count}}</p>
 
@@ -33,7 +47,6 @@
         <div class="flex center">
             <a class="btn btn2" (click)="restartJogo()">Restart</a>
         </div>
-
     </div>
 
 </div>
