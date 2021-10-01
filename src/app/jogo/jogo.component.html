@@ -1,25 +1,27 @@
 <div>
     <!-- Tela de instruções - parte inicial -->
-    <div class="container" *ngIf="showInicio">
-        <div class="col-12">
-            <div class="row">
-                <h3 class="text-center">Instruçoes do jogo</h3>
+    <div  *ngIf="showInicio">
+        <div>
+            <div>
+                <h3 class="flex center">Instruçoes do jogo</h3>
             </div>
 
-            <div class="col-6">
+            <div class="flex center">
                 <ul>
                     <li>Inicie essa aventura e teste sua memória;</li>
                     <li>Para conquistar pontos no "Simon Game", você precisa lembrar da sequência aleatórioa de
-                        cores e
-                        repeti-la</li>
-                    <li>Pressione os botões coloridos na ordem corretas</li>
-                    <li>A cada rodade é um suspense, pois vai aumentandoa a sequência e seu desafio será conseguir a
-                        maior
-                        pontuação sem errar</li>
+                        cores e repeti-la;</li>
+                    <li>Pressione os botões coloridos na ordem correta;</li>
+                    <li>A cada rodada é um suspense, pois vai aumentando a sequência e seu desafio será conseguir a
+                        maior pontuação sem errar;</li>
                 </ul>
             </div>
+        </div>
+
+        <div class="flex center">
             <a href="#" class="btn btn2" (click)="iniciarJogo()">Iniciar</a>
         </div>
+
     </div>
 
     <!-- São 4 botões, um de cada cor. Ao ser ativado chama a estilizalçao de preenchimento e chama a função que recebe o movimento do jogador -->

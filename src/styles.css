@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 :root {
-    --black: #071013;
+    --black: #38014a;
     --green: #29bf12;
     --blue: #08bdbd;
     --red: #f21b3f;
@@ -9,7 +9,10 @@
 }
 
 body {
-    background-color: var(--black);
+    background-image: url("https://ak.picdn.net/shutterstock/videos/1019919385/thumb/1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     color: white;
     font-family: sans-serif;
+
 }
